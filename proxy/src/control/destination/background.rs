@@ -557,7 +557,7 @@ fn pb_to_addr_meta(
     let addr = pb.addr.and_then(pb_to_sock_addr)?;
     let label_iter = set_labels.iter().chain(pb.metric_labels.iter());
     let tls = pb.tls_verification.and_then(TlsVerification::from_pb);
-    let meta = Metadata::from_destination(DstLabels::new(label_iter), tls);
+    let meta = Metadata::new(DstLabels::new(label_iter), tls);
     Some((addr, meta))
 }
 
